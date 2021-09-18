@@ -3,4 +3,5 @@
     <string name="gameScore"> Your Score:</string>
     <string name ="timeRemaining"> Time Remaining:</string>
     <string name="highScore"> High Score:</string>
+    <string name="tapMe"> TAP ME!</string>
 </resources>
