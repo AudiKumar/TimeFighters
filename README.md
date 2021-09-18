@@ -7,7 +7,7 @@ This is part of the the raywenderlich.com [Android and Kotlin For Beginners](htt
 ## Checklist 
 - [X] Setup Android Studio on Personal Computer
 - [X] Create Github Repo 
-- [] App Requirements
+- [ ] App Requirements
     - [ ] Button w/ the text press me
     - [ ] Score Counter that increments by one everytime you press the button 
     - [ ] After the game is over display the best score and the current score
