@@ -8,9 +8,8 @@ This is part of the the raywenderlich.com [Android and Kotlin For Beginners](htt
 - [X] Setup Android Studio on Personal Computer
 - [X] Create Github Repo 
 - [ ] App Requirements
-    - [ ] Button w/ the text press me
-    - [ ] Score Counter that increments by one everytime you press the button 
-    - [ ] After the game is over display the best score and the current score
-    - [ ] Time Left, starts at 60 secs ends at 0 secs
-    - [ ] option to reset the score after the game time is up 
+    - [X] Button w/ the text press me
+    - [X] Score Counter that increments by one everytime you press the button 
+    - [X] After the game is over display the current score
+    - [X] Time Left, starts at 60 secs ends at 0 secs
     - [ ] option to reset the game after the time is up  

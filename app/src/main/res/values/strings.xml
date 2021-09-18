@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Time Fighter</string>
-    <string name="gameScore"> Your Score:</string>
-    <string name ="timeRemaining"> Time Remaining:</string>
-    <string name="highScore"> High Score:</string>
+    <string name="gameScore"> Your Score: %1$d</string>
+    <string name ="timeRemaining"> Time Remaining: %1$d seconds </string>
+    <string name ="timeRemainingOther"> Time Remaining: %1$d second</string>
+    <string name="highScore"> High Score: %1$d</string>
     <string name="tapMe"> TAP ME!</string>
+    <string name="gameOverMsg">Times Up! Your score was %1$d</string>
 </resources>
