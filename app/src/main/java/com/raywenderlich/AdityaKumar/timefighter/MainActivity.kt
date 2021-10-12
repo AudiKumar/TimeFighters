@@ -3,6 +3,7 @@ package com.raywenderlich.AdityaKumar.timefighter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -18,10 +19,16 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var timer: CountDownTimer
     internal var gameStarted: Boolean = false
 
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
+        private const val SCORE_KEY = "SCORE_KEY"
+        private const val TIME_LEFT_KEY = "TIME_LEFT_KEY"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.d(TAG,"onCreate() called. Score is: $gameScore")
         tapMeButton = findViewById(R.id.tapMeButton)
         gameScoreTextView = findViewById(R.id.gameScoreTextView)
         gameScoreTextView.text = getString(R.string.gameScore, gameScore)
