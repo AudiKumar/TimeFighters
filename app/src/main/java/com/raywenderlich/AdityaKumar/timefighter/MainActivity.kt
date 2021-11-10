@@ -3,6 +3,7 @@ package com.raywenderlich.AdityaKumar.timefighter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var tapMeButton: Button
     internal val time:Long = 60 * 1000 // 60 seconds
     internal val internal:Long = 1000 // 1 second
+    internal var timeLeft: Long = 600000
     internal lateinit var timer: CountDownTimer
     internal var gameStarted: Boolean = false
 
@@ -33,10 +35,51 @@ class MainActivity : AppCompatActivity() {
         gameScoreTextView = findViewById(R.id.gameScoreTextView)
         gameScoreTextView.text = getString(R.string.gameScore, gameScore)
         timeRemainingTextView = findViewById(R.id.timeRemainingTextView)
-        resetGame()
+        //resetGame()
+        if (savedInstanceState != null){
+            gameScore = savedInstanceState.getInt(SCORE_KEY)
+            timeLeft = savedInstanceState.getLong(TIME_LEFT_KEY)
+            restoreGame()
+        }
+        else {resetGame()}
         tapMeButton.setOnClickListener { view ->
             incrementScore()
         }
+    }
+
+    private fun restoreGame() {
+        gameScoreTextView.text = getString(R.string.gameScore, gameScore)
+
+        val restoredTime = timeLeft / 1000
+        timeRemainingTextView.text = getString(R.string.timeRemaining, restoredTime)
+
+        timer = object : CountDownTimer(timeLeft, internal){
+            override fun onTick(p0: Long) {
+                val secondsLeft = p0 / 1000
+                timeLeft = p0
+                if (secondsLeft > 1){ timeRemainingTextView.text = getString(R.string.timeRemaining, p0 / 1000) }
+                else{ timeRemainingTextView.text = getString(R.string.timeRemainingOther, p0 / 1000) }
+            }
+
+            override fun onFinish() {
+                endGame()
+            }
+        }
+        timer.start()
+        gameStarted = true
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(SCORE_KEY, gameScore)
+        outState.putLong(TIME_LEFT_KEY, timeLeft)
+        timer.cancel()
+        Log.d(TAG, "onSaveInstanceState: Saving Score: $gameScore & Time Left: $timeLeft")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy() called.")
     }
 
     private fun resetGame(){
@@ -45,12 +88,10 @@ class MainActivity : AppCompatActivity() {
         gameScoreTextView.text = getString(R.string.gameScore, gameScore)
         timer = object : CountDownTimer(time, internal){
             override fun onTick(p0: Long) {
-                if (p0 / 1000 > 1){
-                    timeRemainingTextView.text = getString(R.string.timeRemaining, p0 / 1000)
-                }
-                else{
-                    timeRemainingTextView.text = getString(R.string.timeRemainingOther, p0 / 1000)
-                }
+                val secondsLeft = p0 / 1000
+                timeLeft = p0
+                if (secondsLeft > 1){ timeRemainingTextView.text = getString(R.string.timeRemaining, p0 / 1000) }
+                else{ timeRemainingTextView.text = getString(R.string.timeRemainingOther, p0 / 1000) }
             }
 
             override fun onFinish() {
