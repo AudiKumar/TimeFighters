@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var tapMeButton: Button
     internal val time:Long = 60 * 1000 // 60 seconds
     internal val internal:Long = 1000 // 1 second
-    internal var timeLeft: Long = 600000
+    internal var timeLeft: Long = 60000
     internal lateinit var timer: CountDownTimer
     internal var gameStarted: Boolean = false
 
