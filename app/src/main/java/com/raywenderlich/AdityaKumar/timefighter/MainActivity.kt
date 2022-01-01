@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
             val bounceAnim = AnimationUtils.loadAnimation(this, R.anim.bounce)
             view.startAnimation(bounceAnim)
             incrementScore()
+            val blinkAnim = AnimationUtils.loadAnimation(this, R.anim.blink)
+            gameScoreTextView.startAnimation(blinkAnim)
         }
     }
 
