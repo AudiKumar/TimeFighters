@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Time Fighter</string>
+    <string name="app_name">TFighter</string>
     <string name="gameScore"> Your Score: %1$d</string>
     <string name ="timeRemaining"> Time Remaining: %1$d seconds </string>
     <string name ="timeRemainingOther"> Time Remaining: %1$d second</string>
