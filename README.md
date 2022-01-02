@@ -1,5 +1,5 @@
 # Time Fighters
-A game that I am developing to help me understand android dev better 
+A game that I am developed to help me understand android dev better 
 ## What are the rules of the game
 You have 60 seconds to click a button as many times as possible. Each time you click the button your score goes up by one point.
 ## Where this is From
